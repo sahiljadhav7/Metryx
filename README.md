@@ -65,26 +65,6 @@ Metryx addresses each of these:
 
 ---
 
-## Project Structure
-
-```
-metryx/
-├── src/
-│   ├── api/               # Express ingest server (Gateway)
-│   ├── consumer/          # Background consumer (consume.js)
-│   ├── processor/         # Processor engine (aggregation logic)
-│   ├── models/            # MongoDB & PostgreSQL schemas/models
-│   ├── config/            # RabbitMQ, DB, and environment configuration
-│   └── middleware/         # API key auth, tenant resolution, validation
-├── docker-compose.yml     # RabbitMQ, MongoDB, PostgreSQL, app services
-├── .env.example
-└── README.md
-```
-
-> Adjust to match your actual repository layout.
-
----
-
 ## Getting Started
 
 ### Prerequisites
@@ -132,9 +112,6 @@ RABBITMQ_DLQ=api_hits_dlq
 
 MONGO_URI=mongodb://localhost:27017/metryx_raw
 POSTGRES_URI=postgres://user:password@localhost:5432/metryx_metrics
-```
-
-> Update these values to match your local or production setup.
 
 ---
 
@@ -156,15 +133,3 @@ Every ingested event is scoped to a tenant via an API key passed with each reque
 - [ ] Load testing suite with published throughput benchmarks
 - [ ] Automated retry policy with exponential backoff on the DLQ
 
----
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-## Author
-
-Built as part of a series on designing production-grade, event-driven backend systems.
-If you found this useful, consider starring the repo or following along with the rest of the series.
