@@ -49,3 +49,5 @@ class MongoConnection {
     return this.connection;
   }
 }
+
+export default MongoConnection;
