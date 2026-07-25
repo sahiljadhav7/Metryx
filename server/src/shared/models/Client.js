@@ -65,6 +65,6 @@ const clientSchema = new mongoose.Schema(
 );
 
 clientSchema.index({ isActive: 1 });
-const client = mongoose.model("client", clientSchema);
+const Client = mongoose.model("client", clientSchema);
 
-export default client;
+export default Client;
