@@ -70,6 +70,19 @@ async function initializeConnection() {
 
     logger.info("All connections established succesfully");
   } catch (error) {
-    logger.info("Failed to establish connection");
+    logger.info("Failed to establish connection", error);
+    throw error;
   }
+}
+
+async function startServer() {
+  try {
+    await initializeConnection();
+
+    const server = app.listen(config.port, () => {
+      logger.info(`server started on port ${config.port}`);
+      logger.info(`Environment: ${config.node_env}`);
+      logger.info(`API available at: http://localhost:${config.port}`);
+    });
+  } catch (error) {}
 }
