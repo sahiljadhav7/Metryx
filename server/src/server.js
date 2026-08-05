@@ -38,7 +38,7 @@ app.get("/health", (req, res) => {
   );
 });
 
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   res.status(200).json(
     ResponseFormatter.success(
       {
@@ -60,6 +60,7 @@ app.use((req, res) => {
   res.status(404).json(ResponseFormatter.error("Endpoint not found", 404));
 });
 
+app.use(errorHandler);
 async function initializeConnection() {
   try {
     logger.info("Initializing database connections...");
@@ -106,6 +107,19 @@ async function startServer() {
         process.exit(1);
       }, 1000);
     };
+    process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
+    process.on("SIGINT", () => gracefulShutdown("SIGINT"));
+
+    // Handle uncaught exceptions
+    process.on("uncaughtException", (error) => {
+      logger.error("Uncaught Exception:", error);
+      gracefulShutdown("uncaughtException");
+    });
+
+    process.on("unhandledRejection", (reason, promise) => {
+      logger.error("Unhandled Rejection at:", promise, "reason:", reason);
+      gracefulShutdown("unhandledRejection");
+    });
   } catch (error) {
     logger.error("Failed to start server:", error);
     process.exit(1);
