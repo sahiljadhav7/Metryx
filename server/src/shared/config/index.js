@@ -12,11 +12,11 @@ const config = {
   },
 
   postgres: {
-    host: process.env.POSTGRES_HOST || "localhost",
-    port: parseInt(process.env.POSTGRES_PORT || "5432", 10),
-    database: process.env.POSTGRES_DB || "metryx",
-    user: process.env.POSTGRES_USER || "postgres",
-    password: process.env.POSTGRES_PASSWORD || "password",
+    host: process.env.PG_HOST || process.env.POSTGRES_HOST || "localhost",
+    port: parseInt(process.env.PG_PORT || process.env.POSTGRES_PORT || "5432", 10),
+    database: process.env.PG_DATABASE || process.env.POSTGRES_DB || "metryx",
+    user: process.env.PG_USER || process.env.POSTGRES_USER || "postgres",
+    password: process.env.PG_PASSWORD || process.env.POSTGRES_PASSWORD || "password",
   },
 
   rabbitmq: {

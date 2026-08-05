@@ -1,8 +1,8 @@
 import pg from "pg";
-import config from "./index";
-import logger from "./logger";
+import config from "./index.js";
+import logger from "./logger.js";
 
-const { pool } = pg;
+const { Pool } = pg;
 
 class Postgresconnection {
   constructor() {
@@ -38,7 +38,7 @@ class Postgresconnection {
       const result = await client.query("SELECT NOW()");
       client.release();
 
-      logger.info(`PG connected succesfully at ${result.row[0].now}`);
+      logger.info(`PG connected succesfully at ${result.rows[0].now}`);
     } catch (error) {
       logger.error("Failed to connect to PG", error);
       throw error;

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import config from "./index";
-import logger from "./logger";
+import config from "./index.js";
+import logger from "./logger.js";
 
 class MongoConnection {
   constructor() {
@@ -24,7 +24,7 @@ class MongoConnection {
         logger.error("Mongodb Connection unsuccesful ", err);
       });
       this.connection.on("disconnected", () => {
-        logger.error("Mongodb Disconnected ", err);
+        logger.warn("Mongodb disconnected");
       });
 
       return this.connection;
@@ -52,4 +52,4 @@ class MongoConnection {
   }
 }
 
-export default MongoConnection;
+export default new MongoConnection();

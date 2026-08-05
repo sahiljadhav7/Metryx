@@ -6,7 +6,7 @@ import logger from "./shared/config/logger.js";
 import mongodb from "./shared/config/mongodb.js";
 import postgres from "./shared/config/postgres.js";
 import rabbitmq from "./shared/config/rabbitmq.js";
-import errorHandler from "./shared/middlewares/errorHandler";
+import errorHandler from "./shared/middlewares/errorHandler.js";
 import ResponseFormatter from "./shared/utils/responseFormatter.js";
 import { version } from "mongoose";
 
@@ -111,3 +111,5 @@ async function startServer() {
     process.exit(1);
   }
 }
+
+startServer();

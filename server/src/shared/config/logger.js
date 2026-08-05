@@ -1,5 +1,5 @@
 import winston from "winston";
-import config from "./config.js";
+import config from "./index.js";
 
 const logger = winston.createLogger({
   level: config.node_env === "production" ? "info" : "debug",
@@ -12,7 +12,7 @@ const logger = winston.createLogger({
   defaultMeta: { service: "metryx-service" },
 
   transports: [
-    new winton.transports.File({ filename: "logs/error.log", level: "error" }),
+    new winston.transports.File({ filename: "logs/error.log", level: "error" }),
     new winston.transports.File({ filename: "logs/combined.log" }),
   ],
 });

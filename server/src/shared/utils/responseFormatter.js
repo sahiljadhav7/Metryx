@@ -1,5 +1,5 @@
 class ResponseFormatter {
-  static success(data = null, message = "success", statuscode = 200) {
+  static success(data = null, message = "success", statusCode = 200) {
     return {
       success: true,
       message,
@@ -9,7 +9,7 @@ class ResponseFormatter {
     };
   }
 
-  static error(message = "success", statuscode = 500, error = null) {
+  static error(message = "success", statusCode = 500, error = null) {
     return {
       success: true,
       message,

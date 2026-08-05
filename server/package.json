@@ -1,7 +1,7 @@
 {
-  "name": "y",
+  "name": "api-hit-monitoring",
   "version": "1.0.0",
-  "description": "",
+  "description": "Real time API hit monitoring system built with Node.js, Express, MongoDB, PostgreSQL, RabbitMQ, and Winston for logging. This application tracks and logs API requests, providing insights into usage patterns and performance metrics.",
   "homepage": "https://github.com/sahiljadhav7/Metryx#readme",
   "bugs": {
     "url": "https://github.com/sahiljadhav7/Metryx/issues"
@@ -12,10 +12,14 @@
   },
   "license": "ISC",
   "author": "",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "processor": "node src/modules/processor/consumer.js",
+    "init": "node init-system.js",
+    "init:env": "node init-system.js --generate-env"
   },
   "dependencies": {
     "amqplib": "^2.0.1",
@@ -30,5 +34,8 @@
     "pg": "^8.22.0",
     "uuid": "^14.0.1",
     "winston": "^3.19.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
